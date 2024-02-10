@@ -1,75 +1,419 @@
 ---
 import Layout from '@layouts/Layout.astro'
-import Card from '@components/Card.astro'
+
+const tags = [
+  {
+    id: 1,
+    title: 'html',
+    type: 'document',
+    color: 'yellow',
+  },
+  {
+    id: 2,
+    title: 'head',
+    type: 'document',
+    color: 'yellow',
+  },
+  {
+    id: 3,
+    title: 'body',
+    type: 'document',
+    color: 'yellow',
+  },
+  {
+    id: 4,
+    title: 'title',
+    type: 'metadata',
+    color: 'red',
+  },
+  {
+    id: 5,
+    title: 'base',
+    type: 'metadata',
+    color: 'red',
+  },
+  {
+    id: 6,
+    title: 'link',
+    type: 'metadata',
+    color: 'red',
+  },
+  {
+    id: 7,
+    title: 'meta',
+    type: 'metadata',
+    color: 'red',
+  },
+  {
+    id: 8,
+    title: 'style',
+    type: 'metadata',
+    color: 'red',
+  },
+  {
+    id: 9,
+    title: 'p',
+    type: 'grouping',
+    color: 'purple',
+  },
+  {
+    id: 10,
+    title: 'hr',
+    type: 'grouping',
+    color: 'purple',
+  },
+  {
+    id: 11,
+    title: 'pre',
+    type: 'grouping',
+    color: 'purple',
+  },
+  {
+    id: 12,
+    title: 'blockquote',
+    type: 'grouping',
+    color: 'purple',
+  },
+  {
+    id: 13,
+    title: 'ol',
+    type: 'grouping',
+    color: 'purple',
+  },
+  {
+    id: 14,
+    title: 'ul',
+    type: 'grouping',
+    color: 'purple',
+  },
+  {
+    id: 15,
+    title: 'li',
+    type: 'grouping',
+    color: 'purple',
+  },
+  {
+    id: 16,
+    title: 'dl',
+    type: 'grouping',
+    color: 'purple',
+  },
+  {
+    id: 17,
+    title: 'dt',
+    type: 'grouping',
+    color: 'purple',
+  },
+  {
+    id: 18,
+    title: 'dd',
+    type: 'grouping',
+    color: 'purple',
+  },
+  {
+    id: 19,
+    title: 'figure',
+    type: 'grouping',
+    color: 'purple',
+  },
+  {
+    id: 20,
+    title: 'figcaption',
+    type: 'grouping',
+    color: 'purple',
+  },
+  {
+    id: 21,
+    title: 'div',
+    type: 'grouping',
+    color: 'purple',
+  },
+  {
+    id: 22,
+    title: 'main',
+    type: 'grouping',
+    color: 'purple',
+  },
+  {
+    id: 23,
+    title: 'a',
+    type: 'textual',
+    color: 'green',
+  },
+  {
+    id: 24,
+    title: 'em',
+    type: 'textual',
+    color: 'green',
+  },
+  {
+    id: 25,
+    title: 'strong',
+    type: 'textual',
+    color: 'green',
+  },
+  {
+    id: 26,
+    title: 'small',
+    type: 'textual',
+    color: 'green',
+  },
+  {
+    id: 27,
+    title: 's',
+    type: 'textual',
+    color: 'green',
+  },
+  {
+    id: 28,
+    title: 'cite',
+    type: 'textual',
+    color: 'green',
+  },
+  {
+    id: 29,
+    title: 'q',
+    type: 'textual',
+    color: 'green',
+  },
+  {
+    id: 30,
+    title: 'dfn',
+    type: 'textual',
+    color: 'green',
+  },
+  {
+    id: 31,
+    title: 'abbr',
+    type: 'textual',
+    color: 'green',
+  },
+  {
+    id: 32,
+    title: 'data',
+    type: 'textual',
+    color: 'green',
+  },
+  {
+    id: 33,
+    title: 'time',
+    type: 'textual',
+    color: 'green',
+  },
+  {
+    id: 34,
+    title: 'code',
+    type: 'textual',
+    color: 'green',
+  },
+  {
+    id: 35,
+    title: 'var',
+    type: 'textual',
+    color: 'green',
+  },
+  {
+    id: 36,
+    title: 'samp',
+    type: 'textual',
+    color: 'green',
+  },
+  {
+    id: 37,
+    title: 'kbd',
+    type: 'textual',
+    color: 'green',
+  },
+  {
+    id: 38,
+    title: 'sub',
+    type: 'textual',
+    color: 'green',
+  },
+  {
+    id: 39,
+    title: 'i',
+    type: 'textual',
+    color: 'green',
+  },
+  {
+    id: 40,
+    title: 'b',
+    type: 'textual',
+    color: 'green',
+  },
+  {
+    id: 41,
+    title: 'u',
+    type: 'textual',
+    color: 'green',
+  },
+  {
+    id: 42,
+    title: 'mark',
+    type: 'textual',
+    color: 'green',
+  },
+  {
+    id: 43,
+    title: 'span',
+    type: 'textual',
+    color: 'green',
+  },
+  {
+    id: 44,
+    title: 'br',
+    type: 'textual',
+    color: 'green',
+  },
+  {
+    id: 45,
+    title: 'wbr',
+    type: 'textual',
+    color: 'green',
+  },
+  {
+    id: 46,
+    title: 'img',
+    type: 'multimedia',
+    color: 'cyan',
+  },
+  {
+    id: 47,
+    title: 'picture',
+    type: 'multimedia',
+    color: 'cyan',
+  },
+  {
+    id: 48,
+    title: 'iframe',
+    type: 'multimedia',
+    color: 'cyan',
+  },
+  {
+    id: 49,
+    title: 'embed',
+    type: 'multimedia',
+    color: 'cyan',
+  },
+  {
+    id: 50,
+    title: 'object',
+    type: 'multimedia',
+    color: 'cyan',
+  },
+  {
+    id: 51,
+    title: 'param',
+    type: 'multimedia',
+    color: 'cyan',
+  },
+  {
+    id: 52,
+    title: 'video',
+    type: 'multimedia',
+    color: 'cyan',
+  },
+  {
+    id: 53,
+    title: 'audio',
+    type: 'multimedia',
+    color: 'cyan',
+  },
+  {
+    id: 54,
+    title: 'source',
+    type: 'multimedia',
+    color: 'cyan',
+  },
+  {
+    id: 55,
+    title: 'track',
+    type: 'multimedia',
+    color: 'cyan',
+  },
+  {
+    id: 56,
+    title: 'map',
+    type: 'multimedia',
+    color: 'cyan',
+  },
+  {
+    id: 57,
+    title: 'area',
+    type: 'multimedia',
+    color: 'cyan',
+  },
+  {
+    id: 58,
+    title: 'table',
+    type: 'table',
+    color: 'orange',
+  },
+]
 ---
 
-<Layout title='Welcome to Astro.'>
-  <main>Hola mundo</main>
-  <Card
-    title='j'
-    body='hola'
-    href='h'
-  />
+<Layout title='HTML TAGS with igris.dev'>
+  <section class='grid place-content-center text-center h-32'>
+    <!-- esta en veremos -->
+    <!-- <small class='absolute text-sm -top-2 -right-1'>igris.dev</small> -->
+    <h1 class='relative text-4xl mb-3 font-bold text-white'>
+      HTML <span>TAGS</span>
+    </h1>
+    <p>Vistazo rápido a la funcionalidad de los <span>TAGS</span></p>
+  </section>
+
+  <section
+    id='main'
+    class='place-content-between gap-y-2'
+  >
+    {
+      tags.map((tag) => (
+        <a
+          href='#'
+          class={`contentTag bg-${tag.color}-500 size-20 rounded-sm grid place-items-center relative`}
+        >
+          {tag.title}
+        </a>
+      ))
+    }
+
+    <article id='article'>info</article>
+  </section>
 </Layout>
 
 <style>
-  main {
-    margin: auto;
-    padding: 1rem;
-    width: 800px;
-    max-width: calc(100% - 2rem);
-    color: white;
-    font-size: 20px;
-    line-height: 1.6;
-  }
-  .astro-a {
-    position: absolute;
-    top: -32px;
-    left: 50%;
-    transform: translatex(-50%);
-    width: 220px;
-    height: auto;
-    z-index: -1;
-  }
-  h1 {
-    font-size: 4rem;
-    font-weight: 700;
-    line-height: 1;
-    text-align: center;
-    margin-bottom: 1em;
-  }
-  .text-gradient {
-    background-image: var(--accent-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-size: 400%;
-    background-position: 0%;
-  }
-  .instructions {
-    margin-bottom: 2rem;
-    border: 1px solid rgba(var(--accent-light), 25%);
-    background: linear-gradient(
-      rgba(var(--accent-dark), 66%),
-      rgba(var(--accent-dark), 33%)
-    );
-    padding: 1.5rem;
-    border-radius: 8px;
-  }
-  .instructions code {
-    font-size: 0.8em;
-    font-weight: bold;
-    background: rgba(var(--accent-light), 12%);
-    color: rgb(var(--accent-light));
-    border-radius: 4px;
-    padding: 0.3em 0.4em;
-  }
-  .instructions strong {
-    color: rgb(var(--accent-light));
-  }
-  .link-card-grid {
+  #main {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-    gap: 2rem;
-    padding: 0;
+    grid-template-columns: repeat(12, 5rem);
+    grid-template-rows: repeat(12, 5rem);
+    margin-top: 2rem;
+  }
+
+  .contentTag {
+  }
+
+  #article {
+    background: black;
+    grid-column-start: 4;
+    grid-column-end: 10;
+    grid-row-start: 4;
+    grid-row-end: 6;
+    width: 100%;
+    height: 100%;
+    border-radius: 2px;
+    padding: 0.5rem;
   }
 </style>
+
+<script>
+  const tags = document.querySelectorAll('.contentTag')
+  const viewInfo = document.getElementById('article')
+
+  tags.forEach((tag) => {
+    tag.addEventListener('mouseover', () => {
+      const info = tag.textContent
+      viewInfo.innerHTML = `${info}`
+    })
+  })
+</script>
