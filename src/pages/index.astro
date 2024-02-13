@@ -1,356 +1,6 @@
 ---
 import Layout from '@layouts/Layout.astro'
-
-const tags = [
-  {
-    id: 1,
-    title: 'html',
-    type: 'document',
-    color: 'yellow',
-  },
-  {
-    id: 2,
-    title: 'head',
-    type: 'document',
-    color: 'yellow',
-  },
-  {
-    id: 3,
-    title: 'body',
-    type: 'document',
-    color: 'yellow',
-  },
-  {
-    id: 4,
-    title: 'title',
-    type: 'metadata',
-    color: 'red',
-  },
-  {
-    id: 5,
-    title: 'base',
-    type: 'metadata',
-    color: 'red',
-  },
-  {
-    id: 6,
-    title: 'link',
-    type: 'metadata',
-    color: 'red',
-  },
-  {
-    id: 7,
-    title: 'meta',
-    type: 'metadata',
-    color: 'red',
-  },
-  {
-    id: 8,
-    title: 'style',
-    type: 'metadata',
-    color: 'red',
-  },
-  {
-    id: 9,
-    title: 'p',
-    type: 'grouping',
-    color: 'purple',
-  },
-  {
-    id: 10,
-    title: 'hr',
-    type: 'grouping',
-    color: 'purple',
-  },
-  {
-    id: 11,
-    title: 'pre',
-    type: 'grouping',
-    color: 'purple',
-  },
-  {
-    id: 12,
-    title: 'blockquote',
-    type: 'grouping',
-    color: 'purple',
-  },
-  {
-    id: 13,
-    title: 'ol',
-    type: 'grouping',
-    color: 'purple',
-  },
-  {
-    id: 14,
-    title: 'ul',
-    type: 'grouping',
-    color: 'purple',
-  },
-  {
-    id: 15,
-    title: 'li',
-    type: 'grouping',
-    color: 'purple',
-  },
-  {
-    id: 16,
-    title: 'dl',
-    type: 'grouping',
-    color: 'purple',
-  },
-  {
-    id: 17,
-    title: 'dt',
-    type: 'grouping',
-    color: 'purple',
-  },
-  {
-    id: 18,
-    title: 'dd',
-    type: 'grouping',
-    color: 'purple',
-  },
-  {
-    id: 19,
-    title: 'figure',
-    type: 'grouping',
-    color: 'purple',
-  },
-  {
-    id: 20,
-    title: 'figcaption',
-    type: 'grouping',
-    color: 'purple',
-  },
-  {
-    id: 21,
-    title: 'div',
-    type: 'grouping',
-    color: 'purple',
-  },
-  {
-    id: 22,
-    title: 'main',
-    type: 'grouping',
-    color: 'purple',
-  },
-  {
-    id: 23,
-    title: 'a',
-    type: 'textual',
-    color: 'green',
-  },
-  {
-    id: 24,
-    title: 'em',
-    type: 'textual',
-    color: 'green',
-  },
-  {
-    id: 25,
-    title: 'strong',
-    type: 'textual',
-    color: 'green',
-  },
-  {
-    id: 26,
-    title: 'small',
-    type: 'textual',
-    color: 'green',
-  },
-  {
-    id: 27,
-    title: 's',
-    type: 'textual',
-    color: 'green',
-  },
-  {
-    id: 28,
-    title: 'cite',
-    type: 'textual',
-    color: 'green',
-  },
-  {
-    id: 29,
-    title: 'q',
-    type: 'textual',
-    color: 'green',
-  },
-  {
-    id: 30,
-    title: 'dfn',
-    type: 'textual',
-    color: 'green',
-  },
-  {
-    id: 31,
-    title: 'abbr',
-    type: 'textual',
-    color: 'green',
-  },
-  {
-    id: 32,
-    title: 'data',
-    type: 'textual',
-    color: 'green',
-  },
-  {
-    id: 33,
-    title: 'time',
-    type: 'textual',
-    color: 'green',
-  },
-  {
-    id: 34,
-    title: 'code',
-    type: 'textual',
-    color: 'green',
-  },
-  {
-    id: 35,
-    title: 'var',
-    type: 'textual',
-    color: 'green',
-  },
-  {
-    id: 36,
-    title: 'samp',
-    type: 'textual',
-    color: 'green',
-  },
-  {
-    id: 37,
-    title: 'kbd',
-    type: 'textual',
-    color: 'green',
-  },
-  {
-    id: 38,
-    title: 'sub',
-    type: 'textual',
-    color: 'green',
-  },
-  {
-    id: 39,
-    title: 'i',
-    type: 'textual',
-    color: 'green',
-  },
-  {
-    id: 40,
-    title: 'b',
-    type: 'textual',
-    color: 'green',
-  },
-  {
-    id: 41,
-    title: 'u',
-    type: 'textual',
-    color: 'green',
-  },
-  {
-    id: 42,
-    title: 'mark',
-    type: 'textual',
-    color: 'green',
-  },
-  {
-    id: 43,
-    title: 'span',
-    type: 'textual',
-    color: 'green',
-  },
-  {
-    id: 44,
-    title: 'br',
-    type: 'textual',
-    color: 'green',
-  },
-  {
-    id: 45,
-    title: 'wbr',
-    type: 'textual',
-    color: 'green',
-  },
-  {
-    id: 46,
-    title: 'img',
-    type: 'multimedia',
-    color: 'cyan',
-  },
-  {
-    id: 47,
-    title: 'picture',
-    type: 'multimedia',
-    color: 'cyan',
-  },
-  {
-    id: 48,
-    title: 'iframe',
-    type: 'multimedia',
-    color: 'cyan',
-  },
-  {
-    id: 49,
-    title: 'embed',
-    type: 'multimedia',
-    color: 'cyan',
-  },
-  {
-    id: 50,
-    title: 'object',
-    type: 'multimedia',
-    color: 'cyan',
-  },
-  {
-    id: 51,
-    title: 'param',
-    type: 'multimedia',
-    color: 'cyan',
-  },
-  {
-    id: 52,
-    title: 'video',
-    type: 'multimedia',
-    color: 'cyan',
-  },
-  {
-    id: 53,
-    title: 'audio',
-    type: 'multimedia',
-    color: 'cyan',
-  },
-  {
-    id: 54,
-    title: 'source',
-    type: 'multimedia',
-    color: 'cyan',
-  },
-  {
-    id: 55,
-    title: 'track',
-    type: 'multimedia',
-    color: 'cyan',
-  },
-  {
-    id: 56,
-    title: 'map',
-    type: 'multimedia',
-    color: 'cyan',
-  },
-  {
-    id: 57,
-    title: 'area',
-    type: 'multimedia',
-    color: 'cyan',
-  },
-  {
-    id: 58,
-    title: 'table',
-    type: 'table',
-    color: 'orange',
-  },
-]
+import { tags } from '@utilities/infoTags'
 ---
 
 <Layout title='HTML TAGS with igris.dev'>
@@ -365,45 +15,86 @@ const tags = [
 
   <section
     id='main'
-    class='place-content-between gap-y-2'
+    class='place-content-between gap-5'
   >
     {
       tags.map((tag) => (
         <a
           href='#'
-          class={`contentTag bg-${tag.color}-500 size-20 rounded-sm grid place-items-center relative`}
+          class={`contentTag ${tag.color} rounded-sm grid place-items-center relative`}
         >
-          {tag.title}
+          <p class='truncate w-[3.5rem] text-center text-sm p-1'>{tag.title}</p>
         </a>
       ))
     }
 
-    <article id='article'>info</article>
+    <article
+      id='article'
+      class=''
+    >
+      info
+    </article>
   </section>
 </Layout>
 
 <style>
   #main {
     display: grid;
-    grid-template-columns: repeat(12, 5rem);
-    grid-template-rows: repeat(12, 5rem);
+    grid-template-columns: repeat(auto-fit, minmax(min(3.5rem, 100%), 1fr));
+    grid-auto-rows: 3.5rem;
     margin-top: 2rem;
   }
 
   .contentTag {
+    /* grid-column-start: span 2; */
   }
 
   #article {
+    display: block;
     background: black;
-    grid-column-start: 4;
-    grid-column-end: 10;
-    grid-row-start: 4;
-    grid-row-end: 6;
+    grid-column: 4/15;
+    grid-row: 1/4;
     width: 100%;
     height: 100%;
     border-radius: 2px;
     padding: 0.5rem;
   }
+
+  /* @media screen and (min-width: 450px) {
+      }
+
+  @media screen and (min-width: 550px) {
+      }
+
+  @media screen and (min-width: 650px) {
+      }
+
+  @media screen and (min-width: 750px) {
+    #article {
+      display: block;
+      background: black;
+      grid-column-start: 3;
+      grid-column-end: 6;
+      grid-row-start: 4;
+      grid-row-end: 7;
+      width: 100%;
+      height: 100%;
+      border-radius: 2px;
+      padding: 0.5rem;
+    }
+  }
+
+  @media screen and (min-width: 850px) {
+      }
+
+  @media screen and (min-width: 950px) {
+      }
+
+  @media screen and (min-width: 1050px) {
+      }
+
+  @media screen and (min-width: 1150px) {
+      } */
 </style>
 
 <script>
