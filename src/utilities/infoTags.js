@@ -50,11 +50,25 @@ export const typeColorTags = {
 }
 
 export const tags = [
-  {
+  /* {
     id: 1,
     title: 'html',
     type: typeColorTags.documento.title,
     color: typeColorTags.documento.color,
+    information: [
+      {
+        code: {
+          titleTag: 'html',
+          bodyTag: '',
+          description: '',
+        },
+        images: [
+          {
+            src: '/img.png',
+          },
+        ],
+      },
+    ],
   },
   {
     id: 2,
@@ -67,12 +81,25 @@ export const tags = [
     title: 'body',
     type: typeColorTags.documento.title,
     color: typeColorTags.documento.color,
-  },
+  }, */
   {
     id: 4,
     title: 'title',
     type: typeColorTags.metadatos.title,
     color: typeColorTags.metadatos.color,
+    information: [
+      {
+        code: {
+          bodyTag: `<head>\n<title>HTML TAGS</title>\n</head>`,
+          description: '',
+        },
+        images: [
+          {
+            src: '/img.png',
+          },
+        ],
+      },
+    ],
   },
   {
     id: 5,

@@ -5,8 +5,6 @@ import { tags } from '@utilities/infoTags'
 
 <Layout title='HTML TAGS with igris.dev'>
   <section class='grid place-content-center text-center h-32'>
-    <!-- esta en veremos -->
-    <!-- <small class='absolute text-sm -top-2 -right-1'>igris.dev</small> -->
     <h1 class='relative text-4xl mb-3 font-bold text-white'>
       HTML <span>TAGS</span>
     </h1>
@@ -19,92 +17,97 @@ import { tags } from '@utilities/infoTags'
   >
     {
       tags.map((tag) => (
-        <a
-          href='#'
-          class={`contentTag ${tag.color} rounded-sm grid place-items-center relative`}
-        >
-          <p class='truncate w-[3.5rem] text-center text-sm p-1'>{tag.title}</p>
-        </a>
+        <>
+          <>
+            <article
+              class={`contentTag ${tag.color} rounded-sm h-full flex items-center w-full`}
+            >
+              <h2 class='truncate w-[5rem] text-center text-sm p-1 font-semibold'>
+                {tag.title}
+              </h2>
+
+              <section class='cardInfoHiddenTag p-2 w-full h-full'>
+                <ul class='w-full h-full'>
+                  {tag.information?.map((info) => (
+                    <li class='flex h-full w-full gap-2'>
+                      <div class='flex-1 bg-[#23262d] h-full rounded-md p-2'>
+                        {info.code.bodyTag.split('\n').map((jumpLine) => (
+                          <p>
+                            {jumpLine}
+                            <br />
+                          </p>
+                        ))}
+                      </div>
+                      <div class='flex-1'>
+                        {info.images.map((image) => (
+                          <img
+                            src={image.src}
+                            class='object-fill w-full h-full'
+                          />
+                        ))}
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            </article>
+          </>
+        </>
       ))
     }
-
-    <article
-      id='article'
-      class=''
-    >
-      info
-    </article>
   </section>
 </Layout>
 
 <style>
   #main {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(3.5rem, 100%), 1fr));
-    grid-auto-rows: 3.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(5rem, 100%), 1fr));
+    grid-auto-rows: 5rem;
     margin-top: 2rem;
   }
 
   .contentTag {
-    /* grid-column-start: span 2; */
+    cursor: pointer;
   }
 
-  #article {
-    display: block;
-    background: black;
-    grid-column: 4/15;
-    grid-row: 1/4;
-    width: 100%;
-    height: 100%;
-    border-radius: 2px;
-    padding: 0.5rem;
+  .cardInfoHiddenTag {
+    display: none;
   }
 
-  /* @media screen and (min-width: 450px) {
-      }
+  .cardBigTag {
+    display: none;
+  }
 
-  @media screen and (min-width: 550px) {
-      }
+  .spanTag {
+    grid-column-start: span 3;
+    grid-row-start: span 3;
+  }
 
-  @media screen and (min-width: 650px) {
-      }
-
-  @media screen and (min-width: 750px) {
-    #article {
-      display: block;
-      background: black;
-      grid-column-start: 3;
-      grid-column-end: 6;
-      grid-row-start: 4;
-      grid-row-end: 7;
-      width: 100%;
-      height: 100%;
-      border-radius: 2px;
-      padding: 0.5rem;
+  @media screen and (min-width: 625px) {
+    .spanTag {
+      /* transition: all 1s ease; */
+      grid-column-start: span 6;
+      grid-row-start: span 3;
     }
   }
-
-  @media screen and (min-width: 850px) {
-      }
-
-  @media screen and (min-width: 950px) {
-      }
-
-  @media screen and (min-width: 1050px) {
-      }
-
-  @media screen and (min-width: 1150px) {
-      } */
 </style>
 
 <script>
-  const tags = document.querySelectorAll('.contentTag')
-  const viewInfo = document.getElementById('article')
+  const allTags = document.querySelectorAll('.contentTag')
 
-  tags.forEach((tag) => {
-    tag.addEventListener('mouseover', () => {
-      const info = tag.textContent
-      viewInfo.innerHTML = `${info}`
+  allTags.forEach((tag) => {
+    tag.addEventListener('click', () => {
+      allTags.forEach((otherTag) => {
+        if (otherTag !== tag) {
+          otherTag.classList.remove('spanTag')
+          otherTag.querySelector('section').classList.add('cardInfoHiddenTag')
+          otherTag.querySelector('h2').classList.remove('cardInfoHiddenTag')
+        }
+      })
+
+      tag.querySelector('h2').classList.toggle('cardInfoHiddenTag')
+      tag.querySelector('section').classList.toggle('cardInfoHiddenTag')
+      tag.classList.toggle('spanTag')
     })
   })
 </script>
